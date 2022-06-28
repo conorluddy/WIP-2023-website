@@ -1,12 +1,12 @@
 {
-  "name": "vanillacream",
+  "name": "website-2022",
   "version": "1.0.0",
   "description": "",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "dev": "webpack serve"
+    "build": "swc ./src -d dist",
+    "dev": ""
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
@@ -16,17 +16,15 @@
   "devDependencies": {
     "@babel/core": "^7.18.0",
     "@babel/preset-typescript": "^7.17.12",
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.204",
+    "@swc/helpers": "^0.4.2",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
-    "babel-loader": "^8.2.5",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "2.6.2",
     "serve": "^13.0.2",
-    "ts-loader": "^9.3.0",
-    "typescript": "^4.7.2",
-    "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.9.0"
+    "typescript": "^4.7.2"
   }
 }
