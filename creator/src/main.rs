@@ -17,10 +17,10 @@ fn main() -> std::io::Result<()> {
             let content = fs::read_to_string(path).unwrap();
             let options = Options::empty();
             let parser = Parser::new_ext(&content, options);
-            let mut html_output = String::new();
-            html::push_html(&mut html_output, parser);
             let output_file: PathBuf = [output_path, "fixmyname.html"].iter().collect();
+            let mut html_output = String::new();
             let mut file = File::create(output_file)?;
+            html::push_html(&mut html_output, parser);
             file.write_all(html_output.as_bytes())?;
         } else {
             println!("{:?} is a dir", path);
@@ -29,5 +29,6 @@ fn main() -> std::io::Result<()> {
     Ok(())
 }
 
-
-
+// ~/Development/w/web22/creator
+// $ cargo build
+// $ cargo run "../content/pages" "../dist/pages"
