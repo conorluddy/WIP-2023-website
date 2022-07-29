@@ -8,6 +8,8 @@ use pulldown_cmark::{Parser, Options, html};
 
 fn main() -> std::io::Result<()> {
     let args: Vec<String> = env::args().collect();
+
+    // $ cargo run "../content/pages" "../dist/pages"
     let content_path = &args[1];
     let output_path = &args[2];
 
@@ -19,7 +21,6 @@ fn main() -> std::io::Result<()> {
         let os_string = OsString::from(os_filename);
         let filename = os_string.to_str().unwrap();
 
-
         if path.is_file() { 
             // TODO: if filename ends with .md
 
@@ -27,17 +28,19 @@ fn main() -> std::io::Result<()> {
             let parser = Parser::new_ext(&content, options);
 
             // TODO: Match name of input MD file
-            let output_file: PathBuf = [output_path, filename].iter().collect();
+            println!("Filename: {:?}", filename);
 
-            println!("Writing {:?}", output_file);
+            let mut output_path: PathBuf = [output_path, filename].iter().collect();
+            output_path.set_extension("html");
 
-            let mut file = File::create(output_file)?;
-            
+            println!("Writing: {:?}", output_path);
+
+            let mut file = File::create(output_path)?;
+
             // Make HTML from MD
             let mut html_output = String::new();
             html::push_html(&mut html_output, parser);
 
-            //
             file.write_all(html_output.as_bytes())?;
         } else {
             // Recursion 
@@ -49,7 +52,6 @@ fn main() -> std::io::Result<()> {
 
 // ~/Development/w/web22/creator
 // $ cargo build
-// $ cargo run "../content/pages" "../dist/pages"
 
 // TODO:
 // - Filename
