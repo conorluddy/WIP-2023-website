@@ -12,6 +12,9 @@ fn main() -> std::io::Result<()> {
     // $ cargo run "../content/pages" "../dist/pages"
     let content_path = &args[1];
     let output_path = &args[2];
+    let template_file_path = &args[3];
+
+    let template_string = fs::read_to_string(template_file_path).unwrap();
 
     for entry in fs::read_dir(content_path).unwrap() {
         let options = Options::empty();
@@ -39,9 +42,14 @@ fn main() -> std::io::Result<()> {
 
             // Make HTML from MD
             let mut html_output = String::new();
+
+            // Inject into default template here
+
             html::push_html(&mut html_output, parser);
 
-            file.write_all(html_output.as_bytes())?;
+            let template = template_string.replace("<child-placeholder />", html_output.as_str());
+
+            file.write_all(template.as_bytes())?;
         } else {
             // Recursion 
             println!("{:?} is a dir", path);
@@ -54,6 +62,5 @@ fn main() -> std::io::Result<()> {
 // $ cargo build
 
 // TODO:
-// - Filename
 // - Wrapping default HTML template with <head> etc
 // - Learn how to borrow properly
