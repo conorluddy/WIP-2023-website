@@ -135,41 +135,12 @@ var PopUpInfo = /*#__PURE__*/ function(HTMLElement1) {
         _classCallCheck(this, PopUpInfo);
         var _this;
         _this = _super.call(this);
-        // Create a shadow root
-        var shadow = _this.attachShadow({
-            mode: "open"
+        var template = document.createElement("template");
+        template.innerHTML = "\n      <style>\n        :host {\n          width: 100vw;\n          display: inline-flex;\n          flex-direction: column;\n          justify-content: center;\n          align-items: center;\n        }\n        \n      </style>\n      <slot></slot>\n    ";
+        var shadowRoot = _this.attachShadow({
+            mode: "closed"
         });
-        // Create spans
-        var wrapper = document.createElement("span");
-        wrapper.setAttribute("class", "wrapper");
-        var icon = document.createElement("span");
-        icon.setAttribute("class", "icon");
-        icon.setAttribute("tabindex", 0);
-        var info = document.createElement("span");
-        info.setAttribute("class", "info");
-        // Take attribute content and put it inside the info span
-        var text = _this.getAttribute("data-text");
-        info.textContent = text;
-        // Insert icon
-        var imgUrl;
-        if (_this.hasAttribute("img")) {
-            imgUrl = _this.getAttribute("img");
-        } else {
-            imgUrl = "img/default.png";
-        }
-        var img = document.createElement("img");
-        img.src = imgUrl;
-        icon.appendChild(img);
-        // Create some CSS to apply to the shadow dom
-        var style = document.createElement("style");
-        console.log(style.isConnected);
-        style.textContent = "\n      .wrapper {\n        position: relative;\n      }\n\n      .info {\n        font-size: 0.8rem;\n        width: 200px;\n        display: inline-block;\n        border: 1px solid black;\n        padding: 10px;\n        background: white;\n        border-radius: 10px;\n        opacity: 0;\n        transition: 0.6s all;\n        position: absolute;\n        bottom: 20px;\n        left: 10px;\n        z-index: 3;\n      }\n\n      img {\n        width: 1.2rem;\n      }\n\n      .icon:hover + .info, .icon:focus + .info {\n        opacity: 1;\n      }\n    ";
-        // Attach the created elements to the shadow dom
-        shadow.appendChild(style);
-        console.log(style.isConnected);
-        shadow.appendChild(wrapper);
-        wrapper.appendChild(icon);
-        wrapper.appendChild(info);
+        shadowRoot.appendChild(template.content.cloneNode(true));
         return _this;
     }
     return PopUpInfo;
