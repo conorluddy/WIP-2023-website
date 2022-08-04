@@ -8,14 +8,10 @@ use pulldown_cmark::{Parser, Options, html};
 
 fn main() -> std::io::Result<()> {
     let args: Vec<String> = env::args().collect();
-
-    // $ cargo run "../content/pages" "../dist/pages"
     let content_path = &args[1];
     let output_path = &args[2];
     let template_file_path = &args[3];
-
     let template_string = fs::read_to_string(template_file_path).unwrap();
-
     for entry in fs::read_dir(content_path).unwrap() {
         let options = Options::empty();
         let entry = entry.unwrap();
@@ -23,35 +19,20 @@ fn main() -> std::io::Result<()> {
         let os_filename = entry.path().file_stem().unwrap().to_owned();
         let os_string = OsString::from(os_filename);
         let filename = os_string.to_str().unwrap();
-
         if path.is_file() { 
-            // TODO: if filename ends with .md
-
+            println!("Filename: {:?}", filename);
+            println!("Writing: {:?}", output_path);
             let content = fs::read_to_string(path).unwrap();
             let parser = Parser::new_ext(&content, options);
-
-            // TODO: Match name of input MD file
-            println!("Filename: {:?}", filename);
-
             let mut output_path: PathBuf = [output_path, filename].iter().collect();
             output_path.set_extension("html");
-
-            println!("Writing: {:?}", output_path);
-
             let mut file = File::create(output_path)?;
-
-            // Make HTML from MD
             let mut html_output = String::new();
-
-            // Inject into default template here
-
             html::push_html(&mut html_output, parser);
-
             let template = template_string.replace("<child-placeholder />", html_output.as_str());
-
             file.write_all(template.as_bytes())?;
         } else {
-            // Recursion 
+            // Recursion...
             println!("{:?} is a dir", path);
         }
     }
@@ -60,7 +41,6 @@ fn main() -> std::io::Result<()> {
 
 // ~/Development/w/web22/creator
 // $ cargo build
-
+// $ cargo run "../content/pages" "../dist/pages"
 // TODO:
-// - Wrapping default HTML template with <head> etc
 // - Learn how to borrow properly
