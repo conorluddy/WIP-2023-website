@@ -11,36 +11,36 @@ fn main() -> std::io::Result<()> {
     let content_path = &args[1];
     let output_path = &args[2];
     let template_file_path = &args[3];
+    let replacement_placeholder = "<child-placeholder />";
     let template_string = fs::read_to_string(template_file_path).unwrap();
+    let options = Options::empty();
+
     for entry in fs::read_dir(content_path).unwrap() {
-        let options = Options::empty();
         let entry = entry.unwrap();
         let path = entry.path();
         let os_filename = entry.path().file_stem().unwrap().to_owned();
         let os_string = OsString::from(os_filename);
         let filename = os_string.to_str().unwrap();
+
         if path.is_file() { 
-            println!("Filename: {:?}", filename);
-            println!("Writing: {:?}", output_path);
+
+            // Convert MD file to HTML and inject it into the HTML template
+            let mut html_output = String::new();
+            let html_template = template_string.replace(replacement_placeholder, html_output.as_str());
             let content = fs::read_to_string(path).unwrap();
             let parser = Parser::new_ext(&content, options);
+            html::push_html(&mut html_output, parser);
+
+            // Create a HTML file and write template to it
+            println!("{:?} created", output_path);
             let mut output_path: PathBuf = [output_path, filename].iter().collect();
             output_path.set_extension("html");
             let mut file = File::create(output_path)?;
-            let mut html_output = String::new();
-            html::push_html(&mut html_output, parser);
-            let template = template_string.replace("<child-placeholder />", html_output.as_str());
-            file.write_all(template.as_bytes())?;
+            file.write_all(html_template.as_bytes())?;
         } else {
-            // Recursion...
+            // TODO: Recursively handle directories
             println!("{:?} is a dir", path);
         }
     }
     Ok(())
 }
-
-// ~/Development/w/web22/creator
-// $ cargo build
-// $ cargo run "../content/pages" "../dist/pages"
-// TODO:
-// - Learn how to borrow properly
