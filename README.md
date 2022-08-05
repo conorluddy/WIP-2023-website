@@ -1,14 +1,11 @@
-- [] Local dev server
-- [] Webcomponent styling
-- [] CSS/SCSS/CSSNext?
+# Website project for 2022
 
-// ~/Development/w/web22/creator
-// $ cargo build
-// $ cargo run "../content/pages" "../dist/pages"
-// TODO:
-// - Learn how to borrow properly
+- Rust for building static HTML pages
+- Rust for bundling TS into JS with SWC
+- ? for CSS...
 
-// Todo:
-// CSS...
-// Web components
-// JS...
+```
+~./creator
+$ cargo build
+$ cargo run "../content/pages" "../dist/pages"
+```
