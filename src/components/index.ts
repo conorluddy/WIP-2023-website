@@ -1,10 +1,7 @@
-// class HelloWorld extends HTMLElement {
-//   // connect component
-//   connectedCallback() {
-//     this.textContent = "Hello World!";
-//   }
-// }
+class HelloWorld extends HTMLElement {
+  connectedCallback() {
+    this.textContent = "Hello World!";
+  }
+}
 
-// customElements.define("HelloWorld", HelloWorld);
-
-// export default HelloWorld;
+customElements.define("hello-world", HelloWorld);
