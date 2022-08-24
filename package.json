@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "swc ./src -d dist -w -s",
     "build": "swc ./src -o dist/index.js",
-    "build:templates": "./creator/target/debug/creator ./content/pages ./dist/pages ./src/templates/default.html",
-    "build:all": "swc ./src -o dist/index.js && ./creator/target/debug/creator ./content/pages ./dist/pages ./src/templates/default.html",
+    "build:templates": "./creator/target/debug/creator ./content/pages ./dist ./src/templates/default.html",
+    "build:all": "swc ./src -o dist/index.js && ./creator/target/debug/creator ./content/pages ./dist ./src/templates/default.html",
     "start": "serve ./dist -l 6969",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -26,7 +26,6 @@ fn main() -> std::io::Result<()> {
 
             // Convert MD file to HTML and inject it into the HTML template
             let mut html_output = String::new();
-            let html_template = template_string.replace(replacement_placeholder, html_output.as_str());
             let content = fs::read_to_string(path).unwrap();
             let parser = Parser::new_ext(&content, options);
             html::push_html(&mut html_output, parser);
@@ -36,6 +35,7 @@ fn main() -> std::io::Result<()> {
             let mut output_path: PathBuf = [output_path, filename].iter().collect();
             output_path.set_extension("html");
             let mut file = File::create(output_path)?;
+            let html_template = template_string.replace(replacement_placeholder, html_output.as_str()); 
             file.write_all(html_template.as_bytes())?;
         } else {
             // TODO: Recursively handle directories

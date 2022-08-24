@@ -285,13 +285,12 @@ var HelloWorld = /*#__PURE__*/ function(HTMLElement1) {
         return _super.apply(this, arguments);
     }
     var _proto = HelloWorld.prototype;
-    // connect component
     _proto.connectedCallback = function connectedCallback() {
         this.textContent = "Hello World!";
     };
     return HelloWorld;
 }(_wrapNativeSuper(HTMLElement));
-customElements.define("hello-world", HelloWorld); // export default HelloWorld;
+customElements.define("hello-world", HelloWorld);
 
 
 //# sourceMappingURL=index.js.map
