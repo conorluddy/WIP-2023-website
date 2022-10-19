@@ -1,10 +1,10 @@
+use pulldown_cmark::{html, Options, Parser};
+use std::env;
+use std::ffi::OsString;
 use std::fs;
 use std::fs::File;
-use std::env;
-use std::path::PathBuf;
-use std::ffi::OsString;
 use std::io::prelude::*;
-use pulldown_cmark::{Parser, Options, html};
+use std::path::PathBuf;
 
 fn main() -> std::io::Result<()> {
     let args: Vec<String> = env::args().collect();
@@ -22,8 +22,7 @@ fn main() -> std::io::Result<()> {
         let os_string = OsString::from(os_filename);
         let filename = os_string.to_str().unwrap();
 
-        if path.is_file() { 
-
+        if path.is_file() {
             // Convert MD file to HTML and inject it into the HTML template
             let mut html_output = String::new();
             let content = fs::read_to_string(path).unwrap();
@@ -31,15 +30,16 @@ fn main() -> std::io::Result<()> {
             html::push_html(&mut html_output, parser);
 
             // Create a HTML file and write template to it
-            println!("{:?} created", output_path);
+            // println!("{:?} created", output_path);
             let mut output_path: PathBuf = [output_path, filename].iter().collect();
             output_path.set_extension("html");
             let mut file = File::create(output_path)?;
-            let html_template = template_string.replace(replacement_placeholder, html_output.as_str()); 
+            let html_template =
+                template_string.replace(replacement_placeholder, html_output.as_str());
             file.write_all(html_template.as_bytes())?;
         } else {
             // TODO: Recursively handle directories
-            println!("{:?} is a dir", path);
+            // println!("is a dir");
         }
     }
     Ok(())
