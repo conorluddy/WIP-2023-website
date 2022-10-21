@@ -9,7 +9,9 @@
     "build:templates": "./creator/target/debug/creator ./content/pages ./dist ./src/templates/default.html",
     "build:all": "swc ./src -o dist/index.js && ./creator/target/debug/creator ./content/pages ./dist ./src/templates/default.html",
     "start": "serve ./dist -l 6969",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
@@ -19,6 +21,10 @@
   "devDependencies": {
     "@babel/core": "^7.18.0",
     "@babel/preset-typescript": "^7.17.12",
+    "@storybook/addon-essentials": "^7.0.0-alpha.40",
+    "@storybook/addon-links": "^7.0.0-alpha.40",
+    "@storybook/web-components": "^7.0.0-alpha.40",
+    "@storybook/web-components-vite": "^7.0.0-alpha.40",
     "@swc/cli": "^0.1.57",
     "@swc/core": "^1.2.204",
     "@swc/helpers": "^0.4.2",
@@ -28,10 +34,14 @@
     "chokidar": "^3.5.3",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-storybook": "^0.6.6",
+    "lit": "^2.4.0",
+    "lit-html": "^2.4.0",
     "marked": "^4.0.17",
     "nodemon": "^2.0.19",
     "prettier": "2.6.2",
     "serve": "^13.0.2",
+    "storybook": "^7.0.0-alpha.40",
     "typescript": "^4.7.2"
   }
 }
