@@ -1,6 +1,5 @@
-import { BackgroundNoise } from "./stories/BackgroundNoise";
 // Create a class for the element
-class PopUpInfo extends HTMLElement {
+class App extends HTMLElement {
   constructor() {
     super();
     const template = document.createElement("template");
@@ -24,4 +23,4 @@ class PopUpInfo extends HTMLElement {
 }
 
 // Define the new element
-customElements.define("popup-info", PopUpInfo);
+customElements.define("app-main", App);

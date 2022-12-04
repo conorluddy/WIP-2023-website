@@ -1,13 +1,13 @@
 import type { Meta, StoryFn } from "@storybook/web-components";
-import { Noise } from "./Noise";
+import { BackgroundNoise } from "./BackgroundNoise";
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: "Example/Noise",
+  title: "Example/BackgroundNoise",
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: StoryFn<unknown> = () => new Noise();
+const Template: StoryFn<unknown> = () => new BackgroundNoise();
 
 export const Primary = Template.bind({});
 
