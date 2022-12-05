@@ -1,27 +1,35 @@
-import { BackgroundNoise } from "./stories/BackgroundNoise";
-// Create a class for the element
-class PopUpInfo extends HTMLElement {
+import BackgroundNoise from "./components/BackgroundNoise/BackgroundNoise";
+
+class HelloWorld extends HTMLElement {
+  name: string;
+
   constructor() {
     super();
-    const template = document.createElement("template");
-    template.innerHTML = `
-      <style>
-        :host {
-          width: 100vw;
-          display: inline-flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-        
-      </style>
-      <slot></slot>
-    `;
+    this.name = "World";
+    console.log("XX", BackgroundNoise);
+  }
 
-    const shadowRoot = this.attachShadow({ mode: "closed" });
-    shadowRoot.appendChild(template.content.cloneNode(true));
+  // connect component
+  connectedCallback() {
+    this.textContent = "Hello World 2";
+    this.attachShadow({ mode: "closed" });
+  }
+
+  // component attributes
+  static get observedAttributes() {
+    return ["name"];
+  }
+
+  // attribute change
+  attributeChangedCallback(
+    property: string,
+    oldValue: string,
+    newValue: string
+  ) {
+    if (oldValue === newValue) return;
+    // this[property] = newValue;
   }
 }
 
-// Define the new element
-customElements.define("popup-info", PopUpInfo);
+// TODO: Centralise these definers somewhere
+window.customElements.define("hello-world", HelloWorld);
