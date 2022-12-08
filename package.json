@@ -1,9 +1,11 @@
 {
   "name": "website-2022",
   "version": "1.0.0",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "description": "",
   "private": true,
   "scripts": {
+    "bundle": "spack",
     "dev": "swc ./src/index.ts -d dist -w -s --ignore **/*.stories.js",
     "build": "swc ./src/index.ts -o dist/index.js --ignore **/*.stories.js",
     "build:templates": "./creator/target/debug/creator ./content/pages ./dist ./src/templates/default.html",
@@ -39,6 +41,7 @@
     "lit-html": "^2.4.0",
     "marked": "^4.0.17",
     "nodemon": "^2.0.19",
+    "parcel": "^2.8.0",
     "prettier": "2.6.2",
     "serve": "^13.0.2",
     "storybook": "^7.0.0-alpha.40",

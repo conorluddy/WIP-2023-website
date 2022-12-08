@@ -1,4 +1,4 @@
-import BackgroundNoise from "./components/BackgroundNoise/BackgroundNoise";
+import { BackgroundNoise } from "./components/BackgroundNoise/BackgroundNoise";
 
 class HelloWorld extends HTMLElement {
   name: string;

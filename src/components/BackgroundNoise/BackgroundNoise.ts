@@ -6,12 +6,15 @@ class BackgroundNoise extends HTMLElement {
   }
 }
 
-export function init() {
-  console.log("init");
-  customElements.define("background-noise", BackgroundNoise);
-}
+window.customElements.define("background-noise", BackgroundNoise);
+
+// export function init() {
+//   console.log("init");
+
+// }
 
 export default BackgroundNoise;
+export { BackgroundNoise };
 
 // import { LitElement, html } from "lit";
 // import { customElement } from "lit/decorators.js";

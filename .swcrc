@@ -1,19 +1,19 @@
 {
   "jsc": {
-    "externalHelpers": false,
     "parser": {
       "syntax": "typescript",
-      "tsx": false,
-      "decorators": false,
-      "dynamicImport": false
+      "tsx": false
+    },
+    "target": "es5",
+    "loose": false,
+    "minify": {
+      "compress": true,
+      "mangle": false
     }
   },
   "module": {
-    "type": "umd",
-    "globals": {},
-    "strict": false,
-    "strictMode": true,
-    "lazy": false,
-    "noInterop": false
-  }
+    "type": "es6"
+  },
+  "minify": false,
+  "isModule": true
 }
