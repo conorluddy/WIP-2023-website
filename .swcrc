@@ -5,15 +5,11 @@
       "tsx": false
     },
     "target": "es5",
-    "loose": false,
-    "minify": {
-      "compress": true,
-      "mangle": false
-    }
+    "loose": false
   },
   "module": {
     "type": "es6"
   },
-  "minify": false,
+  "minify": true,
   "isModule": true
 }

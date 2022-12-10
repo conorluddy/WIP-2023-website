@@ -10,7 +10,6 @@ window.customElements.define("background-noise", BackgroundNoise);
 
 // export function init() {
 //   console.log("init");
-
 // }
 
 export default BackgroundNoise;

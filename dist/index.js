@@ -145,11 +145,14 @@ var BackgroundNoise = function(HTMLElement1) {
     _inherits(BackgroundNoise, HTMLElement1);
     var _super = _createSuper(BackgroundNoise);
     function BackgroundNoise() {
-        return _classCallCheck(this, BackgroundNoise), _super.apply(this, arguments);
+        _classCallCheck(this, BackgroundNoise);
+        return _super.apply(this, arguments);
     }
-    return BackgroundNoise.prototype.connectedCallback = function() {
+    var _proto = BackgroundNoise.prototype;
+    _proto.connectedCallback = function connectedCallback() {
         this.textContent = "Hello World!";
-    }, BackgroundNoise;
+    };
+    return BackgroundNoise;
 }(_wrapNativeSuper(HTMLElement));
 window.customElements.define("background-noise", BackgroundNoise);
 var HelloWorld = function(HTMLElement1) {
@@ -157,25 +160,33 @@ var HelloWorld = function(HTMLElement1) {
     _inherits(HelloWorld, HTMLElement1);
     var _super = _createSuper(HelloWorld);
     function HelloWorld() {
+        _classCallCheck(this, HelloWorld);
         var _this;
-        return _classCallCheck(this, HelloWorld), (_this = _super.call(this)).name = "World", console.log("XX", BackgroundNoise), _this;
+        _this = _super.call(this);
+        _this.name = "World";
+        console.log("XX", BackgroundNoise);
+        return _this;
     }
     var _proto = HelloWorld.prototype;
-    return _proto.connectedCallback = function() {
-        this.textContent = "Hello World 2", this.attachShadow({
+    _proto.connectedCallback = function connectedCallback() {
+        this.textContent = "Hello World 2";
+        this.attachShadow({
             mode: "closed"
         });
-    }, _proto.attributeChangedCallback = function(property, oldValue, newValue) {
+    };
+    _proto.attributeChangedCallback = function attributeChangedCallback(property, oldValue, newValue) {
         if (oldValue === newValue) return;
-    }, _createClass(HelloWorld, null, [
+    };
+    _createClass(HelloWorld, null, [
         {
             key: "observedAttributes",
-            get: function() {
+            get: function get() {
                 return [
                     "name"
                 ];
             }
         }
-    ]), HelloWorld;
+    ]);
+    return HelloWorld;
 }(_wrapNativeSuper(HTMLElement));
 window.customElements.define("hello-world", HelloWorld);

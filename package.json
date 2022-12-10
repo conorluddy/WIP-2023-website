@@ -5,15 +5,14 @@
   "description": "",
   "private": true,
   "scripts": {
-    "bundle": "spack",
-    "dev": "swc ./src/index.ts -d dist -w -s --ignore **/*.stories.js",
-    "build": "swc ./src/index.ts -o dist/index.js --ignore **/*.stories.js",
+    "build-storybook": "storybook build",
+    "build:js": "spack",
     "build:templates": "./creator/target/debug/creator ./content/pages ./dist ./src/templates/default.html",
-    "build:all": "swc ./src/index.ts -o dist/index.js --ignore **/*.stories.js && ./creator/target/debug/creator ./content/pages ./dist ./src/templates/default.html",
-    "start": "serve ./dist -l 6969",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "run-p serve build:templates watch:bundle",
+    "serve": "serve ./dist -l 6969",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:bundle": "chokidar \"src/**/*.ts\" -c \"npx spack\""
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
@@ -37,11 +36,8 @@
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-storybook": "^0.6.6",
-    "lit": "^2.4.0",
-    "lit-html": "^2.4.0",
     "marked": "^4.0.17",
     "nodemon": "^2.0.19",
-    "parcel": "^2.8.0",
     "prettier": "2.6.2",
     "serve": "^13.0.2",
     "storybook": "^7.0.0-alpha.40",
