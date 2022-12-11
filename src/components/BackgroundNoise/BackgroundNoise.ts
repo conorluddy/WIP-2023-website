@@ -1,28 +1,15 @@
-// import css from "./BackgroundNoise.styles";
+import styles from "./BackgroundNoise.styles";
+const template = document.createElement("template");
+template.innerHTML = `<style>${styles}</style><slot/>`;
 
 class BackgroundNoise extends HTMLElement {
   connectedCallback() {
-    this.textContent = "Hello World!";
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 }
 
 window.customElements.define("background-noise", BackgroundNoise);
 
-// export function init() {
-//   console.log("init");
-// }
-
 export default BackgroundNoise;
 export { BackgroundNoise };
-
-// import { LitElement, html } from "lit";
-// import { customElement } from "lit/decorators.js";
-// import css from "./BackgroundNoise.styles";
-
-// @customElement("background-noise")
-// export class BackgroundNoise extends LitElement {
-//   static styles = css;
-//   protected render() {
-//     return html`<div><slot></slot></div>`;
-//   }
-// }

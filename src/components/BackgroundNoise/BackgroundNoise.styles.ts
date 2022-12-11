@@ -1,6 +1,4 @@
-import { css } from "lit";
-
-export default css`
+export default `
   :host {
     width: 100%;
     min-height: 100vh;

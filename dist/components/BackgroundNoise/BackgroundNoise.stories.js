@@ -1,2 +1,0 @@
-import{BackgroundNoise}from"./BackgroundNoise";export default{title:"Example/BackgroundNoise"};var Template=function(){return new BackgroundNoise};export var Primary=Template.bind({});Primary.args={};
-//# sourceMappingURL=BackgroundNoise.stories.js.map
