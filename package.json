@@ -8,11 +8,15 @@
     "build-storybook": "storybook build",
     "build:js": "spack",
     "build:templates": "./creator/target/debug/creator ./content/pages ./dist ./src/templates/default.html",
-    "dev": "run-p serve build:templates watch:bundle",
+    "build:css": "lightningcss --minify --nesting --bundle --targets '>= 0.20%' --sourcemap ./src/css/index.css -o ./dist/styles.css",
+    "dev": "run-p serve build:templates watch:bundle watch:css",
+    "start": "run-p serve watch:bundle watch:templates watch:css",
     "serve": "serve ./dist -l 6969",
     "storybook": "storybook dev -p 6006",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch:bundle": "chokidar \"src/**/*.ts\" -c \"npx spack\""
+    "watch:bundle": "chokidar \"src/**/*.ts\" -c \"npx spack\"",
+    "watch:templates": "chokidar \"src/**/*.html\" -c \"npm run build:templates\"",
+    "watch:css": "chokidar \"src/**/*.css\" -c \"lightningcss --minify --nesting --bundle --targets '>= 0.20%' --sourcemap ./src/css/index.css -o ./dist/styles.css\""
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
@@ -33,11 +37,15 @@
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
     "chokidar": "^3.5.3",
+    "chokidar-cli": "^3.0.0",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-storybook": "^0.6.6",
+    "lightningcss": "^1.17.1",
+    "lightningcss-cli": "^1.17.1",
     "marked": "^4.0.17",
     "nodemon": "^2.0.19",
+    "npm-run-all": "^4.1.5",
     "prettier": "2.6.2",
     "serve": "^13.0.2",
     "storybook": "^7.0.0-alpha.40",

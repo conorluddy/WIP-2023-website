@@ -1,3 +1,2 @@
-import { BackgroundNoise } from "./components/BackgroundNoise/BackgroundNoise";
-
-BackgroundNoise;
+import BackgroundNoise from "./components/BackgroundNoise/BackgroundNoise";
+BackgroundNoise();

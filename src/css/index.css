@@ -1,4 +1,2 @@
-html {
-  background: #333;
-  color: #fff;
-}
+@import "./base.css";
+@import "../components/BackgroundNoise/BackgroundNoise.css";

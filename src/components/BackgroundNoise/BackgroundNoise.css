@@ -1,4 +1,6 @@
-:root {
+/* :root { */
+background-noise {
+  color: red;
   background-size: 365px 365px;
   width: 100%;
   min-height: 100vh;

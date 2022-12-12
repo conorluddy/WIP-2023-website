@@ -29,12 +29,12 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <link rel="stylesheet" href="css/styles.css?v=1.0" />
+    <script src="../index.js"></script>
   </head>
 
   <body>
-    <script src="../index.js"></script>
-    <background-noise></background-noise>
-    <hello-world></hello-world>
-    <child-placeholder />
+    <background-noise>
+      <child-placeholder /><!-- Injection point for Rust -->
+    </background-noise>
   </body>
 </html>
