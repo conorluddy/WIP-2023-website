@@ -1,12 +1,15 @@
-import css from "./BackgroundNoise.styles";
+import css from "./GridBase.styles";
 
 const template = document.createElement("template");
 
 template.innerHTML = `
-  <style>${css}</style><slot/>
+  <style>${css}</style>
+  <main>
+    <slot/>
+  </main>
 `;
 
-class BackgroundNoise extends HTMLElement {
+class GridBase extends HTMLElement {
   constructor() {
     super();
   }
@@ -17,5 +20,5 @@ class BackgroundNoise extends HTMLElement {
 }
 
 export default () => {
-  window.customElements.define("background-noise", BackgroundNoise);
+  window.customElements.define("grid-base", GridBase);
 };

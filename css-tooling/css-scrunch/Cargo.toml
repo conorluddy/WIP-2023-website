@@ -1,0 +1,11 @@
+[package]
+name = "css-scrunch"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+css-parser = "0.23"
+cargo-make = "0.40"
+clap = "3.0"
