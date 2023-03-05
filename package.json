@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "build-storybook": "storybook build",
+    "build": "run-p build:js build:templates build:css",
     "build:js": "spack",
     "build:templates": "./creator/target/debug/creator ./content/pages ./dist ./src/templates/default.html",
     "build:css": "lightningcss --minify --nesting --bundle --targets '>= 0.20%' --sourcemap ./src/css/index.css -o ./dist/styles.css",
