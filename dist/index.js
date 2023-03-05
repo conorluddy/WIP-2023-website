@@ -149,7 +149,7 @@ var BackgroundNoise = function(HTMLElement1) {
 const __default1 = function() {
     window.customElements.define("background-noise", BackgroundNoise);
 };
-const __default2 = "\n  :host {\n    display: grid;\n\n\n\n  }\n";
+const __default2 = "\n  :host {\n    display: grid;\n    width: 800px;\n    max-width: 90vw;\n    margin: auto;\n  }\n";
 var template1 = document.createElement("template");
 template1.innerHTML = "\n  <style>".concat(__default2, "</style>\n  <main>\n    <slot/>\n  </main>\n");
 var GridBase = function(HTMLElement1) {
@@ -172,5 +172,29 @@ var GridBase = function(HTMLElement1) {
 const __default3 = function() {
     window.customElements.define("grid-base", GridBase);
 };
+const __default4 = "\n  :host {\n    color: #ccc;\n    font-family: 'Monda', sans-serif;\n  }\n\n  h1 {\n    font-family: 'Rajdhani', sans-serif;\n\n    var(--font-family-header);\n    var(--font-family-body);\n  }\n";
+var template2 = document.createElement("template");
+template2.innerHTML = "\n  <style>".concat(__default4, "</style><slot/>\n");
+var InjectedContent = function(HTMLElement1) {
+    "use strict";
+    _inherits(InjectedContent, HTMLElement1);
+    var _super = _createSuper(InjectedContent);
+    function InjectedContent() {
+        _classCallCheck(this, InjectedContent);
+        return _super.call(this);
+    }
+    var _proto = InjectedContent.prototype;
+    _proto.connectedCallback = function connectedCallback() {
+        this.attachShadow({
+            mode: "open"
+        });
+        this.shadowRoot.appendChild(template2.content.cloneNode(true));
+    };
+    return InjectedContent;
+}(_wrapNativeSuper(HTMLElement));
+const __default5 = function() {
+    window.customElements.define("injected-content", InjectedContent);
+};
 __default3();
 __default1();
+__default5();

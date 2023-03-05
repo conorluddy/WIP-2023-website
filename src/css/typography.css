@@ -1,0 +1,21 @@
+html,
+body {
+  color: #ccc;
+  font-family: "Monda", sans-serif;
+
+  --font-family-header: "Rajdhani", sans-serif;
+  --font-family-body: "Monda", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  /* font-family: ; */
+  /* opacity: 0.2; */
+}
+
+body {
+  /* opacity: 0.3; */
+}
