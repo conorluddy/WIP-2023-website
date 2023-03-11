@@ -7,5 +7,5 @@
 ```
 ~./creator
 $ cargo build
-$ cargo run "../content/pages" "../dist/pages"
+$ cargo run "../content/pages" "../dist/pages" "../src/templates/default.html"
 ```
