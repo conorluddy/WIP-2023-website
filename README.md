@@ -1,8 +1,8 @@
-# Website project for 2022
+# Website project for 2023
 
-- Rust for building static HTML pages
-- Rust for bundling TS into JS with SWC
-- ? for CSS...
+Experimental mess at the moment. Come back later...
+
+---
 
 ```
 ~./creator
