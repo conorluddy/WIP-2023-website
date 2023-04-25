@@ -5,7 +5,7 @@ Experimental mess at the moment. Come back later...
 ---
 
 ```
-~./creator
+~./tooling
 $ cargo build
 $ cargo run "../content/pages" "../dist/pages" "../src/templates/default.html"
 ```

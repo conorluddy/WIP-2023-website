@@ -195,6 +195,30 @@ var InjectedContent = function(HTMLElement1) {
 const __default5 = function() {
     window.customElements.define("injected-content", InjectedContent);
 };
+const __default6 = "\n  :host {\n    width: 100%;\n    height: 100%;\n    display: inline-block; \n    display: flow-root;\n    min-height: 100vh;\n  }\n";
+var template3 = document.createElement("template");
+template3.innerHTML = "\n  <style>".concat(__default6, "</style><slot/>\n");
+var HeroImage = function(HTMLElement1) {
+    "use strict";
+    _inherits(HeroImage, HTMLElement1);
+    var _super = _createSuper(HeroImage);
+    function HeroImage() {
+        _classCallCheck(this, HeroImage);
+        return _super.call(this);
+    }
+    var _proto = HeroImage.prototype;
+    _proto.connectedCallback = function connectedCallback() {
+        this.attachShadow({
+            mode: "open"
+        });
+        this.shadowRoot.appendChild(template3.content.cloneNode(true));
+    };
+    return HeroImage;
+}(_wrapNativeSuper(HTMLElement));
+const __default7 = function() {
+    window.customElements.define("hero-image", HeroImage);
+};
 __default3();
 __default1();
 __default5();
+__default7();
