@@ -11,10 +11,9 @@ pub fn markdown() -> std::io::Result<()> {
     let output_dir = Path::new("../dist");
     let template_file = Path::new("../src/templates/default.html");
 
-    // let args: Vec<String> = env::args().collect();
-    // let content_path = "../content/pages"; //&args[1];
-    // let output_path = "../dist/pages"; //&args[2];
-    // let template_file_path = "../src/templates/default.html"; //&args[3];
+    println!("content_dir: {}", content_dir.display());
+    println!("output_dir: {}", output_dir.display());
+    println!("template_file: {}", template_file.display());
 
     let replacement_placeholder = "<!-- Injection point for Rust -->";
     let template_string = fs::read_to_string(template_file).unwrap();
